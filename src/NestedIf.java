@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class NestedIf {
     public static void main(String[] args) {
-
+        // test comment
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter score");
