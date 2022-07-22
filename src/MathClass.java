@@ -6,7 +6,7 @@ public class MathClass {
         System.out.println(num);
         //Rounding down
         System.out.println(Math.floor(num));
-        //Rounding up
+        //Rounding up to higher number_bigger number
         System.out.println(Math.ceil(num));
         //Rounding according to Math principals
         System.out.println(Math.round(num));
