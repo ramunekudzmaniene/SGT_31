@@ -9,7 +9,7 @@ public class HW_6_ChristmasTree {
         s = scanner.nextInt();
 
         for(i = 0; i <= s; i++){
-            for(j = 1; j <= s-i; j++) {
+            for(j = 0; j <= s-1-i; j++) {
                 System.out.print(" ");
             }
             for(j = 1; j<=2*i-1; j++){
@@ -17,14 +17,11 @@ public class HW_6_ChristmasTree {
 
             }
             System.out.println();
-            }
-        for(i=s; i <=s; i++){
-            for(j=1; j<= s-1; j++){
-                System.out.print(" ");
-            }
-            for(i = s; i<=s; i++) {
-                System.out.print("#");
-            }
         }
+        //base level
+        for(i = 0; i<s-1; i++){
+            System.out.print(" ");
+        }
+        System.out.println("#");
     }
 }
