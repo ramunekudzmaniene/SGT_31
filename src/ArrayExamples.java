@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ArrayExamples {
     public static void main(String[] args) {
 
@@ -27,9 +29,14 @@ public class ArrayExamples {
         //How to get Array size
         System.out.println("Array's size: " + grades.length);
 
+
         //Print out all elements
         for (int i = 0; i < grades.length; i++ ) {
             System.out.print(grades[i] + " ");
         }
+        System.out.println();
+        System.out.println(Arrays.toString(grades));
+
+
     }
 }

@@ -31,10 +31,29 @@ public class TwoDimensionalArray {
         // j - columns
 
         for(int i = 0; i < names.length; i++ ){
-            System.out.println("Row no. " + (i+1));
+            System.out.print("Row no. " + (i+1) + " ");
             for(int j = 0; j < names[1].length; j++){
-                System.out.println(names[i][j]);
+                System.out.print(names[i][j] + " ");
+            }
+            System.out.println();
+        }
+        for(String [] tempNames : names){
+            System.out.print("Row - ");
+            for(String name : tempNames){
+                System.out.print(name + " ");
+            }
+            System.out.println();
+        }
+        //Example
+        int table[] = {1, 2, 3, 4, 5, 6};
+        for (int i = 0; i < table.length; i++) {
+            int value = table[i];
+            if (value % 2 == 0) {
+                System.out.println("even number: " + value);
+            } else {
+                System.out.println("odd number: " + value);
             }
         }
+
     }
 }
