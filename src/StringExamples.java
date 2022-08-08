@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class StringExamples {
     public static void main(String[] args) {
 
@@ -61,5 +63,17 @@ public class StringExamples {
 
         System.out.println(Integer.parseInt(intValue)+4);
 
+        //Trim method
+        System.out.println("          this is the test    ".trim());
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter password (quert*)");
+        String pswd = scanner.nextLine().trim().toLowerCase();
+
+        if(pswd.equals("querty")){
+            System.out.println("Password correct");
+        } else{
+            System.out.println("Password incorrect");
+        }
     }
 }
