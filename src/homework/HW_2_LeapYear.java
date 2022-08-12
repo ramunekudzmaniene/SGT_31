@@ -8,6 +8,7 @@ public class HW_2_LeapYear {
         System.out.println("Please, enter a year as integer number");
         int y = scanner.nextInt();
 
+
         if(y % 400 == 0){
             System.out.println(y + " year is the Leap year");
         }

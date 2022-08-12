@@ -29,7 +29,7 @@ public class HW_4_ArraySumOfElements {
         //System.out.println();
             System.out.println();
             System.out.println("Sum of elements: " + sum);
-            System.out.println("Averige: " + sum/myArray.length);
+            System.out.println("Average: " + sum/myArray.length);
      }
 }
 
