@@ -11,20 +11,20 @@ public class HW_Max_Min {
         System.out.println("Minimum value for the above array = " + min(arrayA));
 
     }
-    public static int max(int [] arrayA){
-        int maxValue = arrayA[0];
-        for(int i = 1; i < arrayA.length; i++){
-            if (arrayA[i] > maxValue){
-                maxValue = arrayA[i];
+    public static int max(int [] array){
+        int maxValue = array[0];
+        for(int i = 1; i < array.length; i++){
+            if (array[i] > maxValue){
+                maxValue = array[i];
             }
         }
         return maxValue;
     }
-    public static int min(int [] arrayA){
-        int minValue = arrayA[0];
-        for(int i = 1; i < arrayA.length; i++){
-            if (arrayA[i] < minValue){
-                minValue = arrayA[i];
+    public static int min(int [] array){
+        int minValue = array[0];
+        for(int i = 1; i < array.length; i++){
+            if (array[i] < minValue){
+                minValue = array[i];
             }
         }
         return minValue;
