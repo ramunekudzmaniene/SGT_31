@@ -13,6 +13,13 @@ public class CallingBook {
 
         book1.printBookInfo();
 
+        Book book2 = new Book();
+        book2.setTitle("Java2");
+        book2.setAuthor("Karlis");
+        book2.setNumberOfPages(200);
+
+        book2.printBookInfo();
+
     }
 
 }
