@@ -24,6 +24,7 @@ public class Main {
                 if (action == 'y') {
                    //call method userLogIn
                     userLogIn();
+                    newTrip();
                 } else if (action == 'n') {
                     //TODO to make method for this
                     System.out.println("Do you want to start job at us?");
@@ -42,18 +43,18 @@ public class Main {
                 }
                 System.out.println("Do you want to do something more y/n");
                 again = scanner.nextLine().charAt(0);
-                if (again == 'y') {
-                    System.out.println("Choose 'r' or 't");
-                    System.out.println("r - register new trip");
-                    System.out.println("t - to check trips and earnings");
-                    String result = scanner.nextLine();
-                    if (result.toLowerCase().equals("r")) {
-                        //createTrip();
-                    }else{
+                //if (again == 'y') {
+                    //System.out.println("Choose 'r' or 't");
+                    //System.out.println("r - register new trip");
+                    //System.out.println("t - to check trips and earnings");
+                    //String result = scanner.nextLine();
+                    //if (result.toLowerCase().equals("r")) {
+                        ////createTrip();
+                   // }else{
                         //checkTrips();
-                    }
+                   // }
 
-                }
+               // }
             }
         } catch(Exception e){
             e.printStackTrace();
@@ -64,9 +65,9 @@ public class Main {
         DriversInfo driversLogInfo = new DriversInfo();
         //mano driversLogInfo = currentUser
 
-        System.out.println("Enter driver`s license number");
+        System.out.println("Enter driver`s license number from 5 numbers");
         driversLogInfo.setDlid(scanner.nextLine());
-        System.out.println("Enter password");
+        System.out.println("Enter password from 7 letters and 1 number");
         driversLogInfo.setPswrd(scanner.nextLine());
         //DataBase class method for login check returns existing driver license No.
         //kas yra userId????
@@ -111,13 +112,13 @@ public class Main {
                 userId = dataBase.checkDlid(newDriver.getDlid());
             }
 
-                System.out.println("Please enter your password");
+                System.out.println("Please enter your password 7 letters and 1 number");
                 newDriver.setPswrd(scanner.nextLine());
 
                 pattern = Pattern.compile("[a-zA-Z]{7}[0-9]");
                 matcher = pattern.matcher(newDriver.getpswrd());
                 while (matcher.matches() == false) {
-                    System.out.println("7 letters and 1 digit, please enter valid password!");
+                    System.out.println("7 letters and 1 number, please enter valid password!");
                     newDriver.setPswrd(scanner.nextLine());
                     pattern = Pattern.compile("[a-zA-Z]{7}[0-9]");
                     matcher = pattern.matcher(newDriver.getpswrd());
@@ -153,22 +154,19 @@ public class Main {
                 }
             }
     //method3
-    /*public static void createTrip (){
-        TripInfo newTrip = new TripInfo();
+    public static void newTrip(){
 
-        System.out.println("Enter km driven");
-        newTrip.setDistance(scanner.nextInt);
-        Pattern pattern = Pattern.compile("[0-9]{5}");
-        Matcher matcher = pattern.matcher(newTrip.getDistance();
+        //System.out.println("Enter car ID from 1 to 6");
+
+        dataBase.createTrip(existingUser, 1, 1, "2022-08-01"  );
 
 
+    }
 
-        existingTrip = dataBase.createTrip(newTrip.getDistance(), newTrip.getDate_time(), newTrip.getPrice() );
-        if (existingTrip > 0){
-            System.out.println("You have created new trip successfully");
-        }
 
-    }*/
+
+
+
 
 }
 

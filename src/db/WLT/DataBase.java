@@ -1,5 +1,6 @@
 package db.WLT;
 import java.sql.*;
+import java.util.Scanner;
 
 public class DataBase {
     public class dataBase {
@@ -77,24 +78,27 @@ public class DataBase {
 
     }
 
-    public int createTrip(int distance, String date_time, int price) {
+    public int createTrip(int driverID,int carID, int distID, String dat) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter date in this format YYYY-MM-DD");
+        dat = scanner.nextLine();
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java31", "root", "Beata")) {
 
-            String sql = "INSERT INTO trips (distance, date_time, price) VALUES (?,?,?)";
+            String sql = "INSERT INTO tripInfo (driverID, carID, distID, dat) VALUES (?,?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, distance);
-            preparedStatement.setString(2,date_time);
-            preparedStatement.setInt(3,price);
+            preparedStatement.setInt(1, driverID);
+            preparedStatement.setInt(2, carID);
+            preparedStatement.setInt(3, distID);
+            preparedStatement.setString(4, dat);
             preparedStatement.executeUpdate();
 
+            System.out.println("New trip entered");
 
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e);
         }
             return 0;
-
-
     }
 
 }
