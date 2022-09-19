@@ -1,20 +1,13 @@
 package db.WLT;
 import java.sql.*;
-import java.util.Scanner;
 
 public class DataBase {
-    public class dataBase {
         private final String dbURL = "jdbc:mysql://localhost:3306/java31";
         private final String username = "root";
         private final String password = "Beata";
-        /*protected String dlid = null;
-        protected String pswrd = null;
-        protected String name = null;
-        protected String surname = null;*/
-    }
 
     public int createUser(String dlid, String pswrd, String name, String surname) {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java31", "root", "Beata")) {
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
 
             String sql = "INSERT INTO drivers (dlid, pswrd, name, surname) VALUES (?,?,?,?)";
 
@@ -25,14 +18,12 @@ public class DataBase {
             preparedStatement.setString(4, surname);
             preparedStatement.executeUpdate();
 
-            //int rowsInserted = statement.executeUpdate();
 
-            //to get the dlid of the current user
             String sqlID = "SELECT * FROM drivers WHERE dlid ='" + dlid + "' and pswrd ='" + pswrd + "'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlID);
             if (resultSet.next()) {
-                return resultSet.getInt(1);//returns current dlid no.
+                return resultSet.getInt(1);//returns current dlid no
             } else {
                 return 0;
             }
@@ -44,7 +35,7 @@ public class DataBase {
     }
 
     public int checkDlid(String dlid) {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java31", "root", "Beata")) {
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
             String sqlUser = "SELECT * FROM drivers WHERE dlid ='" + dlid + "'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlUser);
@@ -61,7 +52,7 @@ public class DataBase {
     }
 
     public int checkDlidAndPswrd(String dlid, String pswrd) { //pvz checkLogin
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java31", "root", "Beata")) {
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
             String sql = "SELECT * FROM drivers WHERE dlid ='" + dlid + "' and pswrd ='" + pswrd + "'";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -78,11 +69,27 @@ public class DataBase {
 
     }
 
+    public int readEarnings (int userID) {
+        int earnings = 0;
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+
+            String sql = "SELECT SUM(tarif.price) FROM tarif INNER JOIN tripinfo ON tripinfo.distID=tarif.did AND tripinfo.driverID = " + userID;
+
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+
+            while (resultSet.next()){
+                earnings = resultSet.getInt(1);
+            }
+        }catch (Exception e){
+
+        }
+        return earnings;
+    }
+
     public int createTrip(int driverID,int carID, int distID, String dat) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("enter date in this format YYYY-MM-DD");
-        dat = scanner.nextLine();
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java31", "root", "Beata")) {
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
 
             String sql = "INSERT INTO tripInfo (driverID, carID, distID, dat) VALUES (?,?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
