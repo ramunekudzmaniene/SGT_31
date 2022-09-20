@@ -34,12 +34,21 @@ public class Main {
                     System.out.println("q or other characters - quit");
                     String result = scanner.next();
 
-                    if (result.toLowerCase().equals("r")){
+                    if (result.toLowerCase().equals("r")) {
 
                         //call method createUser
                         createUser();
-                    } else {
+                        System.out.println("Do you want to login y/n?");
+                        String loin = scanner.next();
+                        if (loin.toLowerCase().equals("y")) {
+                            userLogIn();
+                        } else {
+                            break;
+                            //System.exit(0);
+                        }
+                    }else{
                         System.out.println("Good luck!");
+                        break;
                     }
                 }
                 System.out.println("Do you want to do something more y/n");
@@ -51,7 +60,7 @@ public class Main {
     public static void userLogIn() {
         DriversInfo driversLogInfo = new DriversInfo();
         scanner.nextLine();
-        System.out.println("Enter driver`s license number 5 numbers");
+        System.out.println("Enter driver`s license number (5 numbers)");
         driversLogInfo.setDlid(scanner.nextLine());
         System.out.println("Enter password from 7 letters and 1 number");
         driversLogInfo.setPswrd(scanner.nextLine());
@@ -99,8 +108,8 @@ public class Main {
     //method2
     public static void createUser () {
         DriversInfo newDriver = new DriversInfo();
-        System.out.println("Enter driver`s license number");
-        newDriver.setDlid(scanner.nextLine());
+        System.out.println("Enter driver`s license number (5 numbers)");
+        newDriver.setDlid(scanner.next());
         //Pattern to use
         Pattern pattern = Pattern.compile("[0-9]{5}");
         Matcher matcher = pattern.matcher(newDriver.getDlid());
@@ -128,20 +137,20 @@ public class Main {
             userId = dataBase.checkDlid(newDriver.getDlid());
         }
 
-        System.out.println("Please enter your password 7 letters and 1 number");
-        newDriver.setPswrd(scanner.nextLine());
+        System.out.println("Please enter your password from 7 letters and 1 number");
+        newDriver.setPswrd(scanner.next());
 
-        pattern = Pattern.compile("[a-zA-Z]{5,20}[0-9]");
+        pattern = Pattern.compile("[a-zA-Z]{7,20}[0-9]");
         matcher = pattern.matcher(newDriver.getpswrd());
         while (matcher.matches() == false) {
-            System.out.println("7 letters and 1 number, please enter valid password!");
+            System.out.println("Please enter your password from 7 letters and 1 number");
             newDriver.setPswrd(scanner.nextLine());
-            pattern = Pattern.compile("[a-zA-Z]{5,20}[0-9]");
+            pattern = Pattern.compile("[a-zA-Z]{7,20}[0-9]");
             matcher = pattern.matcher(newDriver.getpswrd());
         }
 
         System.out.println("Enter name");
-        newDriver.setName(scanner.nextLine());
+        newDriver.setName(scanner.next());
         pattern = Pattern.compile("[A-Za-z]{2,45}");
         matcher = pattern.matcher(newDriver.getName());
         while (matcher.matches() == false) {
@@ -151,7 +160,7 @@ public class Main {
             matcher = pattern.matcher(newDriver.getName());
         }
         System.out.println("Enter your surname");
-        newDriver.setSurname(scanner.nextLine());
+        newDriver.setSurname(scanner.next());
         pattern = Pattern.compile("[A-Za-z]{2,45}");
         matcher = pattern.matcher(newDriver.getSurname());
         while (matcher.matches() == false) {
