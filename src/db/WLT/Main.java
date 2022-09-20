@@ -51,7 +51,7 @@ public class Main {
     public static void userLogIn() {
         DriversInfo driversLogInfo = new DriversInfo();
         scanner.nextLine();
-        System.out.println("Enter driver`s license number from 5 numbers");
+        System.out.println("Enter driver`s license number 5 numbers");
         driversLogInfo.setDlid(scanner.nextLine());
         System.out.println("Enter password from 7 letters and 1 number");
         driversLogInfo.setPswrd(scanner.nextLine());
